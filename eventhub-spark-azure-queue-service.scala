@@ -94,6 +94,6 @@ val parsedData = streamingDF.select(from_json(col("Body").cast("string"), jsonSc
 parsedData.writeStream
   .format("delta")
   .outputMode("append")
-  .option("checkpointLocation", "wasbs://weather-transformed@osdublob.blob.core.windows.net/checkpoint1/")
-  .option("path", "wasbs://weather-transformed@osdublob.blob.core.windows.net/processed/")
+  .option("checkpointLocation", "wasbs://weather-transformed@outputblob.blob.core.windows.net/checkpoint1/")
+  .option("path", "wasbs://weather-transformed@outputblob.blob.core.windows.net/processed/")
   .start()
